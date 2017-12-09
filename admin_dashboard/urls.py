@@ -15,11 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from . import views
 from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^places/', include('admin_dashboard.urls')),
-    url(r'^', include('user.urls', namespace='home')),
+    url(r'^all', views.list_all_places),
+    # url(r'^', views.index, name="index"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
