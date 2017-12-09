@@ -24,6 +24,11 @@ class Place(models.Model):
     YES = 'YES'
     NO = 'NO'
 
+    population = models.ForeignKey(
+        'Population',
+        on_delete=models.CASCADE,
+        default=0
+    )
     name = models.CharField(max_length=200)
     description = models.TextField()
     type = models.CharField(max_length=20)
@@ -49,11 +54,6 @@ class Population(models.Model):
     YES = 'YES'
     NO = 'NO'
 
-    place = models.ForeignKey(
-        'Place',
-        on_delete=models.CASCADE,
-        default=0
-    )
     total_population = models.BigIntegerField()
     tribal_population = models.BigIntegerField()
     tribal_population_percent = models.IntegerField()
