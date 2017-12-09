@@ -13,21 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-<<<<<<< HEAD
-from django.conf.urls import include, url
-=======
 from django.conf.urls import url, include
->>>>>>> dev_kd
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-<<<<<<< HEAD
-    url(r'^', include('user.urls')),
-]
-=======
     url(r'^', include('user.urls', namespace='home')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
->>>>>>> dev_kd

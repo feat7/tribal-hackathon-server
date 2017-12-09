@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-from django.conf.urls import url
-
-from . import views
-
-urlpatterns = [
-    url(r'^$', views.index, name='index'),
-]
-=======
 """tribalhackathon URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -32,4 +23,3 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', views.index, name="index"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
->>>>>>> dev_kd
