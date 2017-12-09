@@ -1,4 +1,0 @@
-Django==1.11
-PyJWT==1.5.3
-pylint==1.7.2
-virtualenv==15.0.1
