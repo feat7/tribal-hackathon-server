@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Scheme
+from .models import Allocation, Scheme, Announcement, Place, Population, Complaint
 
 # Register your models here.
-admin.site.register(Scheme)
+admin.site.register([Allocation, Scheme, Announcement, Place, Population, Complaint])
