@@ -30,7 +30,9 @@ class Place(models.Model):
     upper_node=models.ForeignKey(
         'Place',
         on_delete=models.CASCADE,
-        default=0
+        default=0,
+        null=True,
+        blank=True
     )
     status = models.CharField(
         max_length=20,
@@ -47,6 +49,11 @@ class Population(models.Model):
     YES = 'YES'
     NO = 'NO'
 
+    place = models.ForeignKey(
+        'Place',
+        on_delete=models.CASCADE,
+        default=0
+    )
     total_population = models.BigIntegerField()
     tribal_population = models.BigIntegerField()
     tribal_population_percent = models.IntegerField()
@@ -66,16 +73,12 @@ class Allocation(models.Model):
     YES = 'YES'
     NO = 'NO'
 
-    scheme_id = models.ForeignKey(
+    scheme = models.ForeignKey(
         'Scheme',
         on_delete=models.CASCADE
     )
-    place_id = models.ForeignKey(
+    place = models.ForeignKey(
         'Place',
-        on_delete=models.CASCADE
-    )
-    population_id = models.ForeignKey(
-        'Population',
         on_delete=models.CASCADE
     )
     description = models.TextField()
@@ -99,7 +102,7 @@ class Complaint(models.Model):
 
     name = models.CharField(max_length=50)
     description = models.TextField()
-    allocation_id = models.ForeignKey(
+    allocation = models.ForeignKey(
         'Allocation',
         on_delete=models.CASCADE
     )
