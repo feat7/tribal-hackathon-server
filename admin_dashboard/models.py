@@ -18,6 +18,12 @@ class Department(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return  self.name   
+
+    def __unicode__(self):
+        return self.name
+
 class Scheme(models.Model):
     YES = 'YES'
     NO = 'NO'
@@ -43,15 +49,27 @@ class Scheme(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return  self.name   
+
+    def __unicode__(self):
+        return self.name
+
 class Place(models.Model):
     YES = 'YES'
     NO = 'NO'
-    id = models.AutoField(primary_key=True)
+
     name = models.CharField(max_length=200)
     description = models.TextField()
     type = models.CharField(max_length=20)
     upper_node=models.ForeignKey(
         'Place',
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True
+    )
+    population=models.ForeignKey(
+        'Population',
         on_delete=models.CASCADE,
         blank=True,
         null=True
@@ -68,7 +86,10 @@ class Place(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-    		return self.name + " "+ self.type
+        return  self.name+ " - "+ self.type 
+
+    def __unicode__(self):
+        return  self.name+ " - "+ self.type 
 
 class Population(models.Model):
     YES = 'YES'
@@ -87,7 +108,8 @@ class Population(models.Model):
         default=NO
     )
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)    
+    updated_at = models.DateTimeField(auto_now=True)
+
 
 class Allocation(models.Model):
     YES = 'YES'
@@ -117,13 +139,19 @@ class Allocation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return  self.scheme.name+ " - "+self.place.name   
+
+    def __unicode__(self):
+        return  self.scheme.name+ " - "+self.place.name
+
 class Complaint(models.Model):
     YES = 'YES'
     NO = 'NO'
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
     description = models.TextField()
-    allocation_id = models.ForeignKey(
+    allocation = models.ForeignKey(
         'Allocation',
         on_delete=models.CASCADE
     )
@@ -158,7 +186,7 @@ class Announcement(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return     
+        return  self.name   
 
     def __unicode__(self):
-        return 
+        return self.name

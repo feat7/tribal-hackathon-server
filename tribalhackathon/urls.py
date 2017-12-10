@@ -21,7 +21,12 @@ from admin_dashboard.views import admin_panel
 from user.views import index
 
 urlpatterns = [
+<<<<<<< HEAD
     url(r'^djangoadmin/', admin.site.urls),
+=======
+    url(r'^grappelli/', include('grappelli.urls')), # grappelli URLS
+    url(r'^admin/', include(admin.site.urls)), # admin site
+>>>>>>> 2c9e901a5a22ee5c70238ffba3a0f5c0b8e4bb2d
     url(r'^places/', include('admin_dashboard.urls')),
     url(r'^admin', admin_panel),
     url(r'^api/', include('admin_dashboard.urls', namespace='api')),

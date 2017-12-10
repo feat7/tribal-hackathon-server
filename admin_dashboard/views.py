@@ -64,6 +64,9 @@ class places():
         allocation_list = []
         temp_data = {}
 
+        used = 0
+        allocated = 0
+
         for temp_allocation in temp_allocations:
             temp_data = {
                 "id": temp_allocation.id,
@@ -71,6 +74,9 @@ class places():
                 "used_amount": temp_allocation.used_amount,
                 "scheme_name": temp_allocation.scheme.name,
             }
+            used += temp_allocation.used_amount
+            allocated += temp_allocation.allocated_amount
+
             allocation_list.append(temp_data)
             temp_data = {}
 
@@ -83,7 +89,7 @@ class places():
                 "id": temp_level.id,
                 "name": temp_level.name,
                 "description": temp_level.description,
-                "name": temp_level.name,
+                "name": temp_level.name
             }
             level_list.append(temp_data)
             temp_data = {}
@@ -93,7 +99,9 @@ class places():
         data = {
             "success": True,
             "allocations": allocation_list,
-            "sub_levels": level_list
+            "sub_levels": level_list,
+            "used_amount": used,
+            "allocated_amount": allocated
         }
 
         return JsonResponse(data, safe=False)
@@ -110,5 +118,16 @@ class departments():
 
         return JsonResponse(data, safe=False)
 
+<<<<<<< HEAD
 def admin_panel(request):
     return render(request, 'admin_dashboard/index.html')
+=======
+
+class graphs():
+
+    def normal(request, used, allocated):
+
+        performance = (int(used)/int(allocated))*100; 
+        other = 100-performance; 
+        return render(request, 'graphs/normal.html', {'performance': performance, 'other': other});
+>>>>>>> 2c9e901a5a22ee5c70238ffba3a0f5c0b8e4bb2d

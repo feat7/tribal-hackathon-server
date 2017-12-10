@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^places/all', views.places.all, name="places"),
     url(r'^departments/all', views.departments.all, name="departments"),
     url(r'^place-search/(?P<id>(\d+))$', views.places.search),
+    url(r'^graph/(?P<used>(\d+))/(?P<allocated>(\d+))$', views.graphs.normal),
 ]
