@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^allocations/all', views.allocations.all, name="allocations"),
     url(r'^schemes/all', views.schemes.all, name="schemes"),
     url(r'^places/all', views.places.all, name="places"),
+    url(r'^departments/all', views.departments.all, name="departments"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

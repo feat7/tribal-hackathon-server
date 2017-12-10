@@ -58,3 +58,15 @@ class places():
             "places": place_list
         }
         return JsonResponse(data, safe=False)
+
+class departments():
+
+    def all(self):
+        all_departments = Department.objects.all().values()
+
+        data = {
+            "success": True,
+            "departments": list(all_departments)
+        }
+
+        return JsonResponse(data, safe=False)
