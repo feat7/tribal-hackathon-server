@@ -91,6 +91,7 @@ class places():
 
 
         data = {
+            "success": True,
             "allocations": allocation_list,
             "sub_levels": level_list
         }
