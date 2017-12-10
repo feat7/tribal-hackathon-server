@@ -20,6 +20,6 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^api/', include('admin_dashboard.urls', namespace='home')),
+    url(r'^api/', include('admin_dashboard.urls', namespace='api')),
     url(r'^', include('user.urls', namespace='home')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
