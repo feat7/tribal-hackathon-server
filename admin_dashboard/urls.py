@@ -20,17 +20,9 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-<<<<<<< HEAD
     url(r'^allocations/all', views.allocations.all, name="allocations"),
     url(r'^schemes/all', views.schemes.all, name="schemes"),
     url(r'^places/all', views.places.all, name="places"),
     url(r'^departments/all', views.departments.all, name="departments"),
     url(r'^place-search/(?P<id>(\d+))$', views.places.search),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-=======
-    url(r'^all', views.list_all_places),
-    # url(r'^complaints/all', views.complaints.all),
-    # url(r'^', views.index, name="index"),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-from . import views
->>>>>>> 1b0ba044e93796d7d6828104798b7bc34c48f650
+]
