@@ -15,12 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from . import views
 from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^places/', include('admin_dashboard.urls')),
-    url(r'^api/', include('admin_dashboard.urls', namespace='api')),
-    url(r'^', include('user.urls', namespace='home')),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    url(r'^allocations/all', views.allocations.all, name="allocations"),
+    url(r'^schemes/all', views.schemes.all, name="schemes"),
+    url(r'^places/all', views.places.all, name="places"),
+    url(r'^departments/all', views.departments.all, name="departments"),
+    url(r'^place-search/(?P<id>(\d+))$', views.places.search),
+]
