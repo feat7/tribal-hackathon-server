@@ -1,0 +1,18 @@
+{% extends 'graph_base.html' %}
+{% load static %}
+{% block content %}
+<div id="chart"></div>
+
+<script>
+    var colors_array= ["red", "#3A89C9", "#F26C4F"];
+    Morris.Donut({
+        element: 'chart',
+        colors: colors_array,
+        data: [
+            {label: "Amount Used", value: "{{performance|floatformat}}" },
+            {label: "Amount Remaining", value: "{{other|floatformat}}" },
+        ],
+        formatter: function(y, data) { return y+'%' }
+    });
+</script>
+{% endblock %}

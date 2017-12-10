@@ -19,7 +19,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^grappelli/', include('grappelli.urls')), # grappelli URLS
+    url(r'^admin/', include(admin.site.urls)), # admin site
     url(r'^places/', include('admin_dashboard.urls')),
     url(r'^api/', include('admin_dashboard.urls', namespace='api')),
     url(r'^', include('user.urls', namespace='home')),
