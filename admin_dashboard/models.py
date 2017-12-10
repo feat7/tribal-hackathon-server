@@ -1,10 +1,32 @@
 from django.db import models
 
 # Create your models here.
+class Department(models.Model):
+    YES = 'YES'
+    NO = 'NO'
+
+    name = models.CharField(max_length=200)
+    description = models.TextField()
+    status = models.CharField(
+        max_length=20,
+        choices=(
+            (YES, 'YES'),
+            (NO, 'NO'),
+        ),
+        default=NO
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
 class Scheme(models.Model):
     YES = 'YES'
     NO = 'NO'
 
+    department = models.ForeignKey(
+        'Department',
+        on_delete=models.CASCADE,
+        default=0
+    )
     name = models.CharField(max_length=200)
     description = models.TextField()
     used_amount = models.FloatField()
@@ -19,6 +41,9 @@ class Scheme(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def department_details(self):
+        return self.department
 
 class Place(models.Model):
     YES = 'YES'

@@ -10,10 +10,18 @@ class allocations():
 
 class schemes():
     def all(self):
-        all_schemes = Scheme.objects.all()
-        return JsonResponse(list(all_schemes.values()), safe=False)
+        all_schemes = Scheme.objects.all().values()
+        data = {
+            "success": True,
+            "schemes": list(all_schemes),
+        }
+        return JsonResponse(data, safe=False)
 
 class places():
     def all(self):
-        all_places = Place.objects.all()
-        return JsonResponse(list(all_places.values()), safe=False)
+        all_places = Place.objects.all().values()
+        data = {
+            "success": True,
+            "schemes": list(all_places)
+        }
+        return JsonResponse(data, safe=False)
