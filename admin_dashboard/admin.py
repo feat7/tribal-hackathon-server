@@ -1,16 +1,5 @@
 from django.contrib import admin
-from .models import Scheme, Place, Population
+from .models import Department, Allocation, Scheme, Announcement, Place, Population, Complaint
 
 # Register your models here.
-class PlaceAdmin(admin.ModelAdmin):
-    fields = ('id', 'name', 'description', 'type', 'upper_node')
-    pass
-admin.site.register(Place, PlaceAdmin)
-
-class SchemeAdmin(admin.ModelAdmin):
-    pass
-# admin.site.register(Scheme, SchemeAdmin)
-
-class PopulationAdmin(admin.ModelAdmin):
-    pass
-# admin.site.register(Population, PopulationAdmin)
+admin.site.register([Department, Allocation, Scheme, Announcement, Place, Population, Complaint])

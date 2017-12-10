@@ -1,10 +1,33 @@
 from django.db import models
 
 # Create your models here.
+class Department(models.Model):
+    YES = 'YES'
+    NO = 'NO'
+
+    name = models.CharField(max_length=200)
+    description = models.TextField()
+    status = models.CharField(
+        max_length=20,
+        choices=(
+            (YES, 'YES'),
+            (NO, 'NO'),
+        ),
+        default=NO
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
 class Scheme(models.Model):
     YES = 'YES'
     NO = 'NO'
-    id = models.AutoField(primary_key=True)
+
+    department = models.ForeignKey(
+        'Department',
+        on_delete=models.CASCADE,
+        default=0,
+        related_name='Scheme'
+    )
     name = models.CharField(max_length=200)
     description = models.TextField()
     used_amount = models.FloatField()
@@ -69,19 +92,16 @@ class Population(models.Model):
 class Allocation(models.Model):
     YES = 'YES'
     NO = 'NO'
-    id = models.AutoField(primary_key=True)
-    scheme_id = models.ForeignKey(
+
+    scheme = models.ForeignKey(
         'Scheme',
         on_delete=models.CASCADE
     )
-    place_id = models.ForeignKey(
+    place = models.ForeignKey(
         'Place',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
     )
-    population_id = models.ForeignKey(
-        'Population',
-        on_delete=models.CASCADE
-    )
+    
     description = models.TextField()
     allocated_amount = models.BigIntegerField()
     used_amount = models.BigIntegerField()
