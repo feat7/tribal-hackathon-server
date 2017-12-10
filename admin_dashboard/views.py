@@ -109,3 +109,12 @@ class departments():
         }
 
         return JsonResponse(data, safe=False)
+
+
+class graphs():
+
+    def normal(request, used, allocated):
+
+        performance = (int(used)/int(allocated))*100; 
+        other = abs(100-performance); 
+        return render(request, 'graphs/normal.html', {'performance': performance, 'other': other});

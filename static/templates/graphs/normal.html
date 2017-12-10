@@ -1,0 +1,15 @@
+{% extends 'graph_base.html' %}
+{% load static %}
+{% block content %}
+<div id="chart"></div>
+
+<script>
+    Morris.Donut({
+        element: 'chart',
+        data: [
+            {label: "Amount Used", value: "{{performance|floatformat}}" },
+            {label: "Amount Remaining", value: "{{other|floatformat}}" },
+        ]
+    });
+</script>
+{% endblock %}
