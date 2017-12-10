@@ -17,10 +17,13 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
+from admin_dashboard.views import admin_panel
+from user.views import index
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^djangoadmin/', admin.site.urls),
     url(r'^places/', include('admin_dashboard.urls')),
+    url(r'^admin', admin_panel),
     url(r'^api/', include('admin_dashboard.urls', namespace='api')),
-    url(r'^', include('user.urls', namespace='home')),
+    url(r'^', index),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

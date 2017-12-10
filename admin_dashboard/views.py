@@ -109,3 +109,6 @@ class departments():
         }
 
         return JsonResponse(data, safe=False)
+
+def admin_panel(request):
+    return render(request, 'admin_dashboard/index.html')
