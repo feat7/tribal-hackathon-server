@@ -118,10 +118,6 @@ class departments():
 
         return JsonResponse(data, safe=False)
 
-<<<<<<< HEAD
-def admin_panel(request):
-    return render(request, 'admin_dashboard/index.html')
-=======
 
 class graphs():
 
@@ -130,4 +126,3 @@ class graphs():
         performance = (int(used)/int(allocated))*100; 
         other = 100-performance; 
         return render(request, 'graphs/normal.html', {'performance': performance, 'other': other});
->>>>>>> 2c9e901a5a22ee5c70238ffba3a0f5c0b8e4bb2d
