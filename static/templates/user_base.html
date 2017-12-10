@@ -34,6 +34,10 @@
         .progress {
             margin: 0px
         }
+
+        nav ul li a:hover {
+            background-color: #8e24aa
+        }
     </style>
   </head>
   <body class="parallax-demo">
@@ -41,17 +45,26 @@
         <div class="progress">
             <div class="indeterminate"></div>
         </div>
-        <nav>
-            <div class="container">
+        <!-- Dropdown Structure -->
+        <ul id="language_navbar_dropdown" class="dropdown-content">
+            
+                <li><a href="#!"><span class="purple-text text-darken-4">Hindi</span></a></li>
+                <li><a href="#!"><span class="purple-text text-darken-4">English</span></a></li>
+            
+        </ul>
+        <nav class="purple darken-4">
+            <!-- <div class="container"> -->
                 <div class="nav-wrapper">
-                    <a href="#!" class="brand-logo">eYojna</a>
+                    <a href="#!" class="brand-logo">&nbsp eYojna</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="funds">Vital Statistics</a></li>
+                        <li><a href="funds"><i class="material-icons left">&#xE1AF;</i>Vital Statistics</a></li>
                         <li><a href="programs"><i class="material-icons left">&#xE871;</i>Programs</a></li>
                         <li><a href="announcemnets"><i class="material-icons left">&#xE85A;</i>Announcements</a></li>
                         <li><a href="budget"><i class="material-icons left">&#xE8F9;</i>Budget</a></li>
+                        <li><a href="login"><i class="material-icons left">&#xE80C;</i>Scholarships</a></li>
                         <li><a href="login"><i class="material-icons left">&#xE851;</i>Login</a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="language_navbar_dropdown">Language<i class="material-icons right">arrow_drop_down</i></a></li>
                     </ul>
                     <ul class="sidenav" id="mobile-demo">
                         <li><a href="funds">Vital Statistics</a></li>
@@ -61,7 +74,7 @@
                         <li><a href="login"><i class="material-icons left">&#xE851;</i>Login</a></li>
                     </ul>
                 </div>
-            </div>
+            <!-- </div> -->
         </nav>
     </header>
 
