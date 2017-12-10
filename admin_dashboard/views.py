@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
-from .models import Allocation, Scheme, Place, Department
+from .models import Allocation, Scheme, Place, Department, Announcement
 
 # Create your views here.
 class allocations():
@@ -154,3 +154,52 @@ class graphs():
         performance = (int(used)/int(allocated))*100; 
         other = 100-performance; 
         return render(request, 'graphs/normal.html', {'performance': performance, 'other': other});
+
+class announcements():
+    def all(self):
+        temp_announcements = Announcement.objects.filter(status="YES")
+        announcement_list = []
+        temp_data = {}
+
+        for temp_announcement in temp_announcements:
+            temp_data = {
+                "id": temp_announcement.id,
+                "name": temp_announcement.name,
+                "description": temp_announcement.description,
+            }
+
+            announcement_list.append(temp_data)
+            temp_data = {}
+
+        data = {
+            "success": True,
+            "announcements": announcement_list
+        }
+        
+        return JsonResponse(data, safe=False)
+
+    def like(self, id):
+        announcement = announcement.objects.get(pk=id)
+        announcement.likes = announcement.likes + 1
+        announcement.save()
+
+        data = {
+            "success": True,
+            "likes": announcement.likes,
+            "dis_likes": announcement.dis_likes
+        }
+
+        return JsonResponse(data, safe=False)
+
+    def dis_like(self, id):
+        announcement = announcement.objects.get(pk=id)
+        announcement.dis_likes = announcement.dis_likes + 1
+        announcement.save()
+
+        data = {
+            "success": True,
+            "likes": announcement.likes,
+            "dis_likes": announcement.dis_likes
+        }
+
+        return JsonResponse(data, safe=False)

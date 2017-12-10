@@ -174,8 +174,8 @@ class Announcement(models.Model):
     NO = 'NO'
     id = models.AutoField(primary_key=True)
     name = models.TextField()
-    description = models.TextField()    
-    
+    description = models.TextField()
+    document = models.FileField(upload_to='documents/', null=False, blank=False, default=0)
     status = models.CharField(
         max_length=20,
         choices=(

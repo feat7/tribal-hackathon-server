@@ -22,6 +22,7 @@ from django.conf import settings
 urlpatterns = [
     url(r'^allocations/all', views.allocations.all, name="allocations"),
     url(r'^schemes/all', views.schemes.all, name="schemes"),
+    url(r'^announcements/all', views.announcements.all, name="announcements"),
     url(r'^scheme/(?P<id>(\d+))/like$', views.schemes.like),
     url(r'^scheme/(?P<id>(\d+))/dis_like$', views.schemes.dis_like),
     url(r'^places/all', views.places.all, name="places"),
