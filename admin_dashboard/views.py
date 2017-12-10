@@ -116,5 +116,5 @@ class graphs():
     def normal(request, used, allocated):
 
         performance = (int(used)/int(allocated))*100; 
-        other = abs(100-performance); 
+        other = 100-performance; 
         return render(request, 'graphs/normal.html', {'performance': performance, 'other': other});

@@ -9,7 +9,8 @@
         data: [
             {label: "Amount Used", value: "{{performance|floatformat}}" },
             {label: "Amount Remaining", value: "{{other|floatformat}}" },
-        ]
+        ],
+        formatter: function(y, data) { return y+'%' }
     });
 </script>
 {% endblock %}
