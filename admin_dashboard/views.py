@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from .models import Allocation, Scheme, Place, Department
 
 # Create your views here.
@@ -57,6 +57,44 @@ class places():
             "success": True,
             "places": place_list
         }
+        return JsonResponse(data, safe=False)
+
+    def search(self, id):
+        temp_allocations = Allocation.objects.filter(place_id=id)
+        allocation_list = []
+        temp_data = {}
+
+        for temp_allocation in temp_allocations:
+            temp_data = {
+                "id": temp_allocation.id,
+                "allocated_amount": temp_allocation.allocated_amount,
+                "used_amount": temp_allocation.used_amount,
+                "scheme_name": temp_allocation.scheme.name,
+            }
+            allocation_list.append(temp_data)
+            temp_data = {}
+
+        temp_levels = Place.objects.filter(upper_node_id=id)
+        level_list = []
+        temp_data = {}
+
+        for temp_level in temp_levels:
+            temp_data = {
+                "id": temp_level.id,
+                "name": temp_level.name,
+                "description": temp_level.description,
+                "name": temp_level.name,
+            }
+            level_list.append(temp_data)
+            temp_data = {}
+        
+
+
+        data = {
+            "allocations": allocation_list,
+            "sub_levels": level_list
+        }
+
         return JsonResponse(data, safe=False)
 
 class departments():

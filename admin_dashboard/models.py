@@ -103,7 +103,6 @@ class Allocation(models.Model):
     place = models.ForeignKey(
         'Place',
         on_delete=models.CASCADE,
-        related_name='place_details'
     )
     
     description = models.TextField()
