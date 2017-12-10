@@ -25,7 +25,8 @@ class Scheme(models.Model):
     department = models.ForeignKey(
         'Department',
         on_delete=models.CASCADE,
-        default=0
+        default=0,
+        related_name='Scheme'
     )
     name = models.CharField(max_length=200)
     description = models.TextField()
@@ -41,9 +42,6 @@ class Scheme(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
-    def department_details(self):
-        return self.department
 
 class Place(models.Model):
     YES = 'YES'
