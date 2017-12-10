@@ -32,7 +32,6 @@ ALLOWED_HOSTS = ["*", "127.0.0.1"]
 
 INSTALLED_APPS = [
     'material',
-    'material.frontend',
     'material.admin',
     'django.contrib.admin',
     'django.contrib.auth',
