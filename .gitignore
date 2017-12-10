@@ -2,6 +2,11 @@
 __pycache__/
 *.py[cod]
 *$py.class
+<<<<<<< HEAD
+=======
+*.pyc
+.fuse*
+>>>>>>> e57db530567cdb320f654cb648f037a9ff2db87f
 
 # C extensions
 *.so
@@ -103,4 +108,8 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+<<<<<<< HEAD
 .fuse*
+=======
+*.sqlite3
+>>>>>>> e57db530567cdb320f654cb648f037a9ff2db87f

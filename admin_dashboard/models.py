@@ -23,15 +23,30 @@ class Scheme(models.Model):
 class Place(models.Model):
     YES = 'YES'
     NO = 'NO'
+<<<<<<< HEAD
     id = models.AutoField(primary_key=True)
+=======
+
+    population = models.ForeignKey(
+        'Population',
+        on_delete=models.CASCADE,
+        default=0
+    )
+>>>>>>> e57db530567cdb320f654cb648f037a9ff2db87f
     name = models.CharField(max_length=200)
     description = models.TextField()
     type = models.CharField(max_length=20)
     upper_node=models.ForeignKey(
         'Place',
         on_delete=models.CASCADE,
+<<<<<<< HEAD
         blank=True,
         null=True
+=======
+        default=0,
+        null=True,
+        blank=True
+>>>>>>> e57db530567cdb320f654cb648f037a9ff2db87f
     )
     status = models.CharField(
         max_length=20,
@@ -69,17 +84,18 @@ class Population(models.Model):
 class Allocation(models.Model):
     YES = 'YES'
     NO = 'NO'
+<<<<<<< HEAD
     id = models.AutoField(primary_key=True)
     scheme_id = models.ForeignKey(
+=======
+
+    scheme = models.ForeignKey(
+>>>>>>> e57db530567cdb320f654cb648f037a9ff2db87f
         'Scheme',
         on_delete=models.CASCADE
     )
-    place_id = models.ForeignKey(
+    place = models.ForeignKey(
         'Place',
-        on_delete=models.CASCADE
-    )
-    population_id = models.ForeignKey(
-        'Population',
         on_delete=models.CASCADE
     )
     description = models.TextField()
@@ -103,7 +119,7 @@ class Complaint(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
     description = models.TextField()
-    allocation_id = models.ForeignKey(
+    allocation = models.ForeignKey(
         'Allocation',
         on_delete=models.CASCADE
     )
