@@ -64,6 +64,9 @@ class places():
         allocation_list = []
         temp_data = {}
 
+        used = 0
+        allocated = 0
+
         for temp_allocation in temp_allocations:
             temp_data = {
                 "id": temp_allocation.id,
@@ -71,6 +74,9 @@ class places():
                 "used_amount": temp_allocation.used_amount,
                 "scheme_name": temp_allocation.scheme.name,
             }
+            used += temp_allocation.used_amount
+            allocated += temp_allocation.allocated_amount
+
             allocation_list.append(temp_data)
             temp_data = {}
 
@@ -83,7 +89,7 @@ class places():
                 "id": temp_level.id,
                 "name": temp_level.name,
                 "description": temp_level.description,
-                "name": temp_level.name,
+                "name": temp_level.name
             }
             level_list.append(temp_data)
             temp_data = {}
@@ -93,7 +99,9 @@ class places():
         data = {
             "success": True,
             "allocations": allocation_list,
-            "sub_levels": level_list
+            "sub_levels": level_list,
+            "used_amount": used,
+            "allocated_amount": allocated
         }
 
         return JsonResponse(data, safe=False)

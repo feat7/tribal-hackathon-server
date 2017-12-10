@@ -151,7 +151,7 @@ class Complaint(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
     description = models.TextField()
-    allocation_id = models.ForeignKey(
+    allocation = models.ForeignKey(
         'Allocation',
         on_delete=models.CASCADE
     )
