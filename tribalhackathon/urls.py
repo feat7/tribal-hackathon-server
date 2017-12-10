@@ -17,11 +17,15 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
+# from admin_dashboard.views import admin_panel
+from user.views import index
 
 urlpatterns = [
     url(r'^grappelli/', include('grappelli.urls')), # grappelli URLS
     url(r'^admin/', include(admin.site.urls)), # admin site
-    url(r'^places/', include('admin_dashboard.urls')),
     url(r'^api/', include('admin_dashboard.urls', namespace='api')),
-    url(r'^', include('user.urls', namespace='home')),
+    url(r'^', index),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
