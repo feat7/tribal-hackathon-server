@@ -21,6 +21,7 @@ class Department(models.Model):
 class Scheme(models.Model):
     YES = 'YES'
     NO = 'NO'
+<<<<<<< HEAD
 
     department = models.ForeignKey(
         'Department',
@@ -28,6 +29,9 @@ class Scheme(models.Model):
         default=0,
         related_name='Scheme'
     )
+=======
+    id = models.AutoField(primary_key=True)
+>>>>>>> 1b0ba044e93796d7d6828104798b7bc34c48f650
     name = models.CharField(max_length=200)
     description = models.TextField()
     used_amount = models.FloatField()
@@ -46,21 +50,15 @@ class Scheme(models.Model):
 class Place(models.Model):
     YES = 'YES'
     NO = 'NO'
-
-    population = models.ForeignKey(
-        'Population',
-        on_delete=models.CASCADE,
-        default=0
-    )
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=200)
     description = models.TextField()
     type = models.CharField(max_length=20)
     upper_node=models.ForeignKey(
         'Place',
         on_delete=models.CASCADE,
-        default=0,
-        null=True,
-        blank=True
+        blank=True,
+        null=True
     )
     status = models.CharField(
         max_length=20,
@@ -73,10 +71,13 @@ class Place(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+    		return self.name + " "+ self.type
+
 class Population(models.Model):
     YES = 'YES'
     NO = 'NO'
-
+    id = models.AutoField(primary_key=True)
     total_population = models.BigIntegerField()
     tribal_population = models.BigIntegerField()
     tribal_population_percent = models.IntegerField()
@@ -95,16 +96,23 @@ class Population(models.Model):
 class Allocation(models.Model):
     YES = 'YES'
     NO = 'NO'
-
-    scheme = models.ForeignKey(
+    id = models.AutoField(primary_key=True)
+    scheme_id = models.ForeignKey(
         'Scheme',
         on_delete=models.CASCADE
     )
-    place = models.ForeignKey(
+    place_id = models.ForeignKey(
         'Place',
         on_delete=models.CASCADE,
     )
+<<<<<<< HEAD
     
+=======
+    population_id = models.ForeignKey(
+        'Population',
+        on_delete=models.CASCADE
+    )
+>>>>>>> 1b0ba044e93796d7d6828104798b7bc34c48f650
     description = models.TextField()
     allocated_amount = models.BigIntegerField()
     used_amount = models.BigIntegerField()
@@ -123,10 +131,10 @@ class Allocation(models.Model):
 class Complaint(models.Model):
     YES = 'YES'
     NO = 'NO'
-
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
     description = models.TextField()
-    allocation = models.ForeignKey(
+    allocation_id = models.ForeignKey(
         'Allocation',
         on_delete=models.CASCADE
     )
@@ -145,7 +153,7 @@ class Complaint(models.Model):
 class Announcement(models.Model):
     YES = 'YES'
     NO = 'NO'
-
+    id = models.AutoField(primary_key=True)
     name = models.TextField()
     description = models.TextField()    
     

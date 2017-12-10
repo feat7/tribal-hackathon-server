@@ -2,8 +2,6 @@
 __pycache__/
 *.py[cod]
 *$py.class
-*.pyc
-.fuse*
 
 # C extensions
 *.so
@@ -103,4 +101,8 @@ venv.bak/
 /site
 
 # mypy
+<<<<<<< HEAD
 .mypy_cache/
+=======
+.mypy_cache/
+>>>>>>> 1b0ba044e93796d7d6828104798b7bc34c48f650
