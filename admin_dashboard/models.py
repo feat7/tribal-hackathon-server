@@ -38,6 +38,8 @@ class Scheme(models.Model):
     description = models.TextField()
     used_amount = models.FloatField()
     allocated_amount = models.FloatField()
+    likes = models.IntegerField(default=0)
+    dis_likes = models.IntegerField(default=0)
     status = models.CharField(
         max_length=20,
         choices=(

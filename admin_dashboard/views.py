@@ -23,7 +23,9 @@ class schemes():
                 "name": temp_scheme.name,
                 "description": temp_scheme.description,
                 "department_id" : temp_department.id,
-                "department_name" : temp_department.name
+                "department_name" : temp_department.name,
+                "likes" : temp_scheme.likes,
+                "dis_likes" : temp_scheme.dis_likes,
             }
 
             scheme_list.append(temp_data)
@@ -34,6 +36,32 @@ class schemes():
             "schemes": scheme_list
         }
         
+        return JsonResponse(data, safe=False)
+
+    def like(self, id):
+        scheme = Scheme.objects.get(pk=id)
+        scheme.likes = scheme.likes + 1
+        scheme.save()
+
+        data = {
+            "success": True,
+            "likes": scheme.likes,
+            "dis_likes": scheme.dis_likes
+        }
+
+        return JsonResponse(data, safe=False)
+
+    def dis_like(self, id):
+        scheme = Scheme.objects.get(pk=id)
+        scheme.dis_likes = scheme.dis_likes + 1
+        scheme.save()
+
+        data = {
+            "success": True,
+            "likes": scheme.likes,
+            "dis_likes": scheme.dis_likes
+        }
+
         return JsonResponse(data, safe=False)
 
 class places():
