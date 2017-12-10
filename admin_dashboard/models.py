@@ -79,8 +79,10 @@ class Allocation(models.Model):
     )
     place = models.ForeignKey(
         'Place',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        related_name='place_details'
     )
+    
     description = models.TextField()
     allocated_amount = models.BigIntegerField()
     used_amount = models.BigIntegerField()
