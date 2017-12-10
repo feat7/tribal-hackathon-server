@@ -1,4 +1,4 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,6 +18,7 @@
     <!-- CSS-->
     <link href="http://next.materializecss.com/css/prism.css" rel="stylesheet">
     <link href="http://next.materializecss.com/css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="{% static 'assets/css/materializecss.css' %}"
     <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- if !isDemo-->
@@ -38,9 +39,24 @@
         nav ul li a:hover {
             background-color: #8e24aa
         }
+        #change_language {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
     </style>
   </head>
+  
   <body class="parallax-demo">
+      <div id="change_language">
+            <a class="waves-effect waves-light btn" style="padding:0">
+                <div id="google_translate_element"></div>
+            </a>
+      </div>
     <header>
         <div class="progress">
             <div class="indeterminate"></div>
@@ -58,20 +74,21 @@
                     <a href="#!" class="brand-logo">&nbsp eYojna</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="funds"><i class="material-icons left">&#xE1AF;</i>Vital Statistics</a></li>
-                        <li><a href="programs"><i class="material-icons left">&#xE871;</i>Programs</a></li>
-                        <li><a href="announcemnets"><i class="material-icons left">&#xE85A;</i>Announcements</a></li>
-                        <li><a href="budget"><i class="material-icons left">&#xE8F9;</i>Budget</a></li>
-                        <li><a href="login"><i class="material-icons left">&#xE80C;</i>Scholarships</a></li>
-                        <li><a href="login"><i class="material-icons left">&#xE851;</i>Login</a></li>
-                        <li><a class="dropdown-trigger" href="#!" data-target="language_navbar_dropdown">Language<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a href="/statistics"><i class="material-icons left">&#xE1AF;</i>Vital Statistics</a></li>
+                        <li><a href="/programs"><i class="material-icons left">&#xE871;</i>Programs</a></li>
+                        <li><a href="/announcemnets"><i class="material-icons left">&#xE85A;</i>Announcements</a></li>
+                        <li><a href="/budget"><i class="material-icons left">&#xE8F9;</i>Budget</a></li>
+                        <li><a href="/scholarships"><i class="material-icons left">&#xE80C;</i>Scholarships</a></li>
+                        <li><a href="/login"><i class="material-icons left">&#xE851;</i>Login</a></li>
+                        <!-- <li><a class="dropdown-trigger" href="#!" data-target="language_navbar_dropdown">Language<i class="material-icons right">arrow_drop_down</i></a></li> -->
                     </ul>
                     <ul class="sidenav" id="mobile-demo">
-                        <li><a href="funds">Vital Statistics</a></li>
-                        <li><a href="programs"><i class="material-icons left">&#xE871;</i>Programs</a></li>
-                        <li><a href="announcemnets"><i class="material-icons left">&#xE85A;</i>Announcements</a></li>
-                        <li><a href="budget"><i class="material-icons left">&#xE8F9;</i>Budget</a></li>
-                        <li><a href="login"><i class="material-icons left">&#xE851;</i>Login</a></li>
+                        <li><a href="/statistics"><i class="material-icons left">&#xE1AF;</i>Vital Statistics</a></li>
+                        <li><a href="/programs"><i class="material-icons left">&#xE871;</i>Programs</a></li>
+                        <li><a href="/announcemnets"><i class="material-icons left">&#xE85A;</i>Announcements</a></li>
+                        <li><a href="/budget"><i class="material-icons left">&#xE8F9;</i>Budget</a></li>
+                        <li><a href="/scholarships"><i class="material-icons left">&#xE80C;</i>Scholarships</a></li>
+                        <li><a href="/login"><i class="material-icons left">&#xE851;</i>Login</a></li>
                     </ul>
                 </div>
             <!-- </div> -->
@@ -87,12 +104,6 @@
   {% endblock %}
   <div class="parallax-container">
     <div class="parallax"><img src="https://images.thrillophilia.com/image/upload/s--MADGJk93--/c_fill,f_auto,fl_strip_profile,h_800,q_auto,w_1300/v1/images/photos/000/111/713/original/1493985763_Madia-Gond-tribals-or-Adivasis.jpg.jpg?1493985763"></div>
-  </div>
-
-  <div class="buysellads buysellads-demo hide-on-small-only">
-    <a href="#!" class="close"><i class="material-icons">close</i></a>
-    <!-- CarbonAds Zone Code -->
-    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?zoneid=1673&serve=C6AILKT&placement=materializecss" id="_carbonads_js"></script>
   </div>
     <footer class="page-footer docs-footer">
       <div class="container">
@@ -152,13 +163,18 @@
     <script src="http://next.materializecss.com/jade/search.js"></script>
     <script src="http://next.materializecss.com/bin/materialize.js"></script>
     <script src="http://next.materializecss.com/js/init.js"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+          new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'hi', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+        }
+        </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <!-- Twitter Button -->
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
     <!-- Google Plus Button-->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
-    <!--  Google Analytics  -->
+     <!-- Google Analytics 
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -168,7 +184,7 @@
     ga('create', 'UA-56218128-1', 'auto');
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
-    </script>
+    </script> -->
 
   </body>
 </html>

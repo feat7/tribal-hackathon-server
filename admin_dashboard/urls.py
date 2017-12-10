@@ -24,4 +24,3 @@ urlpatterns = [
     # url(r'^complaints/all', views.complaints.all),
     # url(r'^', views.index, name="index"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-from . import views
