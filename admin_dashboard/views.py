@@ -28,6 +28,8 @@ class schemes():
                 "department_name" : temp_department.name,
                 "likes" : temp_scheme.likes,
                 "dis_likes" : temp_scheme.dis_likes,
+                "allocated_amount" : temp_scheme.allocated_amount,
+                "used_amount" : temp_scheme.used_amount
             }
 
             scheme_list.append(temp_data)
