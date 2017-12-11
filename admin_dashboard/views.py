@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
 from .models import Allocation, Scheme, Place, Department, Announcement
+from material.frontend.views import ModelViewSet, ListModelView
+from . import models
 
 # Create your views here.
 class allocations():
@@ -63,6 +65,11 @@ class schemes():
         }
 
         return JsonResponse(data, safe=False)
+
+class SchemeViewSet(ModelViewSet):
+    model = models.Scheme
+    list_display = ('name', 'department', 'description', 'allocated_amount', 'used_amount', 'likes', 'dis_likes', 'status', 'updated_at')
+
 
 class places():
     def all(self):
