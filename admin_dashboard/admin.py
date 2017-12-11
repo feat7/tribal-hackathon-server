@@ -36,3 +36,13 @@ class PopulationAdmin(admin.ModelAdmin):
 class SchemeAdmin(admin.ModelAdmin):
     icon = '<i class="material-icons">assignment</i>'
     list_display = ('name', 'department', 'description', 'allocated_amount', 'used_amount', 'likes', 'dis_likes', 'status', 'updated_at')
+    search_fields = ('name', )
+    def get_search_results(self, request, queryset, search_term):
+        queryset, use_distinct = super(SchemeAdmin, self).get_search_results(request, queryset, search_term)
+        try:
+            final_search_term = search_term
+        except ValueError:
+            pass
+        else:
+            queryset |= self.model.objects.filter(description__iexact=final_search_term)
+        return queryset, use_distinct
