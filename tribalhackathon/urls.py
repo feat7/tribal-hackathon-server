@@ -17,13 +17,18 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
-# from admin_dashboard.views import admin_panel
-from user.views import index
+from django.views import generic
+from admin_dashboard.views import schemes
+from user.views import index, statistics
+from material.frontend import urls as frontend_urls
 
 urlpatterns = [
     url(r'^grappelli/', include('grappelli.urls')), # grappelli URLS
     url(r'^admin/', include(admin.site.urls)), # admin site
     url(r'^api/', include('admin_dashboard.urls', namespace='api')),
+    url(r'^statistics', statistics),
+    url(r'^schemes', schemes.view_all),
+    url(r'^panel/', include('admin_dashboard.urls', namespace='admin_dashboard')),
     url(r'^', index),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

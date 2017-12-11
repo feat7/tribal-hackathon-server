@@ -1,0 +1,165 @@
+.donut-chart {
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+  
+    .quad {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  
+    .chart-center {
+      position: absolute;
+      border-radius: 50%;
+    
+      span {
+        display: block;
+        text-align: center;
+      }
+    }
+  }
+  
+  @mixin donut-chart($name, $perc, $size, $width, $speed, $base, $center, $color, $textColor: $color, $textSize: 40px) {
+    
+    $deg: ($perc/100*360)+deg;
+    
+    @-webkit-keyframes #{$name} {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+      
+      100% {
+        -webkit-transform: rotate($deg);
+      }
+    }
+    
+    @-webkit-keyframes chartRotate2 {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+      
+      100% {
+        -webkit-transform: rotate(90deg);
+      }
+    }
+    
+    @-webkit-keyframes chartRotate3 {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+      
+      100% {
+        -webkit-transform: rotate(180deg);
+      }
+    }
+    
+    @-webkit-keyframes chartRotate4 {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+      
+      100% {
+        -webkit-transform: rotate(270deg);
+      }
+    }
+    
+    @-webkit-keyframes chartCover {
+      0%, 90% {
+        opacity: 1;
+      }
+      
+      91%, 100% {
+        opacity: 0;
+      }
+    }
+      
+    .donut-chart {
+      &.#{$name} {
+        width: $size;
+        height: $size;
+        background: $base;
+        
+        .quad {
+          width: $size/2;
+          height: $size/2;
+          top: 0;
+          left: 0;
+          border-radius: 100% 0 0 0;
+          display: none;
+        
+          &.one {
+            -webkit-transform: rotate($deg);  
+            -webkit-transform-origin: bottom right;
+            background: $color;
+            -webkit-animation: #{$name} $speed linear;
+          
+            @if $perc > 0 {
+              display: block;
+            }
+          }
+          
+          &.two {
+            -webkit-transform: rotate(90deg);
+            -webkit-transform-origin: bottom right;
+            background: $color;
+            -webkit-animation: chartRotate2 $speed linear;
+            
+            @if $perc > 25 {
+              display: block;
+            }
+          }
+        
+          &.three {
+            -webkit-transform: rotate(180deg);
+            -webkit-transform-origin: bottom right;
+            background: $color;
+            -webkit-animation: chartRotate3 $speed linear;
+            
+            @if $perc > 50 {
+              display: block;
+            }
+          }
+          
+          &.four {
+            -webkit-transform: rotate(270deg);
+            -webkit-transform-origin: bottom right;
+            background: $color;
+            -webkit-animation: chartRotate4 $speed linear;
+            
+            @if $perc > 75 {
+              display: block;
+            }
+          }
+        
+          &.top {
+            display: block;
+            background: $base;
+            
+            @if $perc > 75 {
+              opacity: 0;
+              -webkit-animation: chartCover .01s linear $speed/1.2 both;
+            }
+          }
+        } // quad
+        
+        .chart-center {
+          top: $width;
+          left: $width;
+          width: $size - ($width * 2);
+          height: $size - ($width * 2);
+          background: $center;
+          
+          &:after {
+              display: inline-block;
+              width: 100%;
+              font-size: $size / 5;
+              color: $textColor;
+              text-align: center;
+              line-height: $size - ($width * 2);
+              content: '#{$perc}%';
+            }
+        }
+      }
+    }
+  } // mixin
