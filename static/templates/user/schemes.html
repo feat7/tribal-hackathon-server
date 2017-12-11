@@ -1,0 +1,60 @@
+{% extends 'user_base.html' %}
+{% load static %}
+{% block content %}
+<link href="{% static 'assets/css/charts.css' %}">
+<div id="styles"></div>
+<div class="row">
+    <div class="col s12 m8 l8 offset-l2">
+        <div class="card">
+            <div class="card-content ">
+                <span class="card-title">
+                    <center><h5>Integrated Tribal Development Projects</h5></center>
+                </span>
+            </div>
+            <div class="card-tabs">
+                <ul class="tabs tabs-fixed-width">
+                    <li class="tab"><a class="active" href="#tab_intro">About the project</a></li>
+                    <li class="tab">
+                        <a href="#tab_schemes">
+                            Schemes
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-content grey lighten-4">
+                <div id="tab_intro">
+                    <b><h6>Objectives of the formation of the project: -</h6></b>
+                    <li>Preparation of projects / project for the development of Tribal areas of project area.</li>
+                    <li>To review the progress of the work being done in the project area and to overcome the problems faced by the departments with the help of related departments.</li>
+                    <li>Coordination between different departments, in the work being done in the project areas.</li>
+                    <li>Keeping necessary monitoring in the works done in the project area.</li>
+                    <li>
+                        Editing the work related to planning projects. As such
+                            <br>
+                            &nbsp&nbsp&nbsp&nbsp1. Preparation of schemes under tribal sub plan (Demand No.-41, 42 and 68).
+                            <br>
+                            &nbsp&nbsp&nbsp&nbsp2. Preparation of schemes under special component plan (demand no-15, 64).
+                            <br>
+                            &nbsp&nbsp&nbsp&nbsp3. Preparation of schemes taken under special central assistance.
+                            <br>
+                            &nbsp&nbsp&nbsp&nbsp4. Preparation of programs and programs taken under section 275 (1) of the Constitution.
+                            <br>
+                            &nbsp&nbsp&nbsp&nbsp5. To make special plans keeping in view the local requirement for all round development of the area.
+                    </li>
+                </div>
+                <div id="tab_schemes">
+                    <ul class="collapsible popout" data-collapsible="accordion" id="schemes_tab">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+    $("#nav_schemes").addClass('active');
+</script>
+<script src="{% static 'assets/js/load_schemes.js' %}"></script>
+{% endblock %}
