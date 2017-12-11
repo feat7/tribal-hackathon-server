@@ -2,6 +2,10 @@
 {% load static %}
 {% block title %}Home{%endblock%}
 {% block content %}
+<!--  Parallax Section  -->
+<div class="parallax-container">
+    <div class="parallax"><img src="http://4.bp.blogspot.com/-yMZPt2d7XRw/UlEyk8R8YuI/AAAAAAAAJCA/NGpe08eFxD0/s1600/bastar+girls.jpg"></div>
+</div>
 <div class="section white purple-text text-darken-4">
     <div class="row">
         <div class="col s12 m10 offset-m1">
@@ -25,21 +29,21 @@
                 <div class="card-content grey lighten-4" style="min-height: 200px">
                     <div id="circulars">
                         <marquee direction="up">
-                            <ul id="circulars_display" class="collection">
-                            </ul>
+                            <div id="circulars_display">
+                            </div>
                         </marquee>
                     </div>
                     <div id="plans">                        
                         <marquee direction="up">
                             <!-- <div id="plans_display"></div> -->
-                            <ul id="plans_display" class="collection">
-                            </ul>
+                            <div id="plans_display">
+                            </div>
                         </marquee>
                     </div>
                     <div id="budget">
                         <marquee direction="up">
-                            <ul id="budget_display" class="collection">
-                            </ul>
+                            <div id="budget_display">
+                            </div>
                         </marquee>
                     </div>
                 </div>
@@ -47,4 +51,10 @@
         </div>
     </div>
 </div>
+<div class="parallax-container">
+    <div class="parallax"><img src="https://images.thrillophilia.com/image/upload/s--MADGJk93--/c_fill,f_auto,fl_strip_profile,h_800,q_auto,w_1300/v1/images/photos/000/111/713/original/1493985763_Madia-Gond-tribals-or-Adivasis.jpg.jpg?1493985763"></div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{% static 'assets/js/base.js' %}" ></script>
 {% endblock %}

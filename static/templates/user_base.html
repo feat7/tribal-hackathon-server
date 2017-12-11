@@ -18,7 +18,8 @@
     <!-- CSS-->
     <link href="http://next.materializecss.com/css/prism.css" rel="stylesheet">
     <link href="http://next.materializecss.com/css/ghpages-materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
-    <link href="{% static 'assets/css/materialize.css' %}"
+    <link href="{% static 'assets/css/materialize.css' %}">
+    <link href="{% static 'assets/css/main.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- if !isDemo-->
@@ -58,7 +59,7 @@
             </a>
       </div>
     <header>
-        <div class="progress">
+        <div class="progress" id="progress_bar">
             <div class="indeterminate"></div>
         </div>
         <!-- Dropdown Structure -->
@@ -74,17 +75,17 @@
                     <a href="#!" class="brand-logo">&nbsp eYojna</a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="/statistics"><i class="material-icons left">&#xE1AF;</i>Vital Statistics</a></li>
-                        <li><a href="/programs"><i class="material-icons left">&#xE871;</i>Programs</a></li>
-                        <li><a href="/announcemnets"><i class="material-icons left">&#xE85A;</i>Announcements</a></li>
-                        <li><a href="/budget"><i class="material-icons left">&#xE8F9;</i>Budget</a></li>
-                        <li><a href="/scholarships"><i class="material-icons left">&#xE80C;</i>Scholarships</a></li>
-                        <li><a href="/login"><i class="material-icons left">&#xE851;</i>Login</a></li>
+                        <li id="nav_statistics"><a href="/statistics"><i class="material-icons left">&#xE1AF;</i>Important Statistics</a></li>
+                        <li id="nav_schemes"><a href="/programs"><i class="material-icons left">&#xE871;</i>Schemes</a></li>
+                        <li id="nav_announcements"><a href="/announcemnets"><i class="material-icons left">&#xE85A;</i>Announcements</a></li>
+                        <li id="nav_budget"><a href="/budget"><i class="material-icons left">&#xE8F9;</i>Budget</a></li>
+                        <li id="nav_scholarships"><a href="/scholarships"><i class="material-icons left">&#xE80C;</i>Scholarships</a></li>
+                        <li id="nav_login"><a href="/login"><i class="material-icons left">&#xE851;</i>Login</a></li>
                         <!-- <li><a class="dropdown-trigger" href="#!" data-target="language_navbar_dropdown">Language<i class="material-icons right">arrow_drop_down</i></a></li> -->
                     </ul>
                     <ul class="sidenav" id="mobile-demo">
                         <li><a href="/statistics"><i class="material-icons left">&#xE1AF;</i>Vital Statistics</a></li>
-                        <li><a href="/programs"><i class="material-icons left">&#xE871;</i>Programs</a></li>
+                        <li><a href="/schemes"><i class="material-icons left">&#xE871;</i>Schemes</a></li>
                         <li><a href="/announcemnets"><i class="material-icons left">&#xE85A;</i>Announcements</a></li>
                         <li><a href="/budget"><i class="material-icons left">&#xE8F9;</i>Budget</a></li>
                         <li><a href="/scholarships"><i class="material-icons left">&#xE80C;</i>Scholarships</a></li>
@@ -96,65 +97,44 @@
     </header>
 
 <main>
-<!--  Parallax Section  -->
-  <div class="parallax-container">
-    <div class="parallax"><img src="http://4.bp.blogspot.com/-yMZPt2d7XRw/UlEyk8R8YuI/AAAAAAAAJCA/NGpe08eFxD0/s1600/bastar+girls.jpg"></div>
-  </div>
   {% block content %}
   {% endblock %}
-  <div class="parallax-container">
-    <div class="parallax"><img src="https://images.thrillophilia.com/image/upload/s--MADGJk93--/c_fill,f_auto,fl_strip_profile,h_800,q_auto,w_1300/v1/images/photos/000/111/713/original/1493985763_Madia-Gond-tribals-or-Adivasis.jpg.jpg?1493985763"></div>
-  </div>
-    <footer class="page-footer docs-footer purple darken-4">
+  <footer class="page-footer purple darken-4">
       <div class="container">
-        <div class="row" style="margin-bottom: 0;">
-          <div class="col s12 m10 offset-m1">
-            <div class="row">
-              <div class="col l4 s12">
-                <h5>Help Materialize Grow</h5>
-                <p class="grey-text text-darken-2">We hope you have enjoyed using Materialize and if you feel like it has helped you out and want to support the team you can help us by donating or backing us on Patreon. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-                <a class="btn waves-effect waves-light red lighten-2" href="/support-us.html">Support Us</a>
-
-              </div>
-              <div class="col l4 s12">
-                <h5>Join the Discussion</h5>
-                <p class="grey-text text-darken-2">We have a Gitter chat room set up where you can talk directly with us. Come in and discuss new features, future goals, general problems or questions, or anything else you can think of.</p>
-                <a class="btn waves-effect waves-light red lighten-2" target="_blank" href="https://gitter.im/Dogfalo/materialize">Chat</a>
-              </div>
-              <div class="col l4 s12" style="overflow: hidden;">
-                <h5>Connect</h5>
-                <iframe src="https://ghbtns.com/github-btn.html?user=dogfalo&repo=materialize&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170" height="30"></iframe>
-                <br>
-                <a href="https://twitter.com/MaterializeCSS" class="twitter-follow-button" data-show-count="true" data-size="large" data-dnt="true">Follow @MaterializeCSS</a>
-                <br>
-                <div class="g-follow" data-annotation="bubble" data-height="24" data-href="https://plus.google.com/108619793845925798422" data-rel="publisher"></div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col s12">
-                <h5>Patreon Sponsors</h5>
-              </div>
-              <div class="col l3 s12">
-                <div class="patreon-footer-ad">
-                  <a href="http://lucidocean.com" target="_blank">
-                    <img src="https://s8.postimg.org/762csselh/logo_full_size.png" alt="Lucid Ocean">
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="footer-copyright">
-              © 2014-2017 Materialize, All rights reserved.
-              <a class="grey-text text-darken-1 right" href="https://github.com/Dogfalo/materialize/blob/master/LICENSE">MIT License</a>
-            </div>
+        <div class="row">
+          <div class="col l3 s12">
+            <h5 class="white-text">Contact Us</h5>
+            <p class="grey-text text-lighten-4">E-Mail Address: ctd.cg@nic.in</p>
           </div>
+          <div class="col l3 s12">
+            <h5 class="white-text">Secretary</h5>
+            <p>Tribal and Scheduled Caste Development Department
+                Room No S-4, Mahanadi Bhawan 
+                New Raipur Chhattisgarh 492015</p>
+          </div>
+          <div class="col l3 s12">
+            <h5 class="white-text">Commissioner</h5>
+            <p>Tribal and Scheduled Caste Development Department
+                Block D Ground Floor, Indrawati Bhawan 
+                New Raipur Chhattisgarh 492015</p>
+          </div>
+          <div class="col l3 s12">
+            <h5 class="white-text">Map</h5>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d119068.2680392886!2d81.796691!3d21.157039!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe23796cb5bbee93f!2sIndravati+Bhawan%2C+Directorate+Building%2C+Naya+Raipur!5e0!3m2!1sen!2sin!4v1512949574553" width="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+          <center>© 2017 eYojna</center>
+        <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
         </div>
       </div>
     </footer>
 
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    {% block scripts %}{% endblock %}
     <script>if (!window.jQuery) { document.write('<script src="bin/jquery-3.2.1.min.js"><\/script>'); }
     </script>
     <script src="http://next.materializecss.com/js/jquery.timeago.min.js"></script>
@@ -163,7 +143,6 @@
     <script src="http://next.materializecss.com/jade/search.js"></script>
     <script src="http://next.materializecss.com/bin/materialize.js"></script>
     <script src="http://next.materializecss.com/js/init.js"></script>
-    <script src="{% static 'assets/js/base.js' %}" ></script>
     <script type="text/javascript">
         function googleTranslateElementInit() {
           new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'hi', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');

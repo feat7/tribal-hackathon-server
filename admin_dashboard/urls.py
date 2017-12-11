@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from . import views
 from django.conf.urls.static import static
 from django.conf import settings
+from django.views import generic
+from . import views
+
 
 urlpatterns = [
     url(r'^allocations/all', views.allocations.all, name="allocations"),
@@ -29,4 +31,5 @@ urlpatterns = [
     url(r'^departments/all', views.departments.all, name="departments"),
     url(r'^place-search/(?P<id>(\d+))$', views.places.search),
     url(r'^graph/(?P<used>(\d+))/(?P<allocated>(\d+))$', views.graphs.normal),
+    url(r'^schemes/', include(views.SchemeViewSet().urls)),
 ]
