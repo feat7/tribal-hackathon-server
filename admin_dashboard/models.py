@@ -113,7 +113,7 @@ class Population(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return  self.id+ " - "+ self.total_population
+        return  str(self.id+ " - "+ self.total_population)
 
 
 class Allocation(models.Model):
