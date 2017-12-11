@@ -53,4 +53,5 @@ $(document).ready(function(){
           console.log('AJAX call not successfull');
         }
     });
+    $("#progress_bar").hide();
 });
