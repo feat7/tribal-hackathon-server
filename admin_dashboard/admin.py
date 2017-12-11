@@ -9,7 +9,7 @@ class DepartmentAdmin(admin.ModelAdmin):
 
 @admin.register(models.Allocation)
 class AllocationAdmin(admin.ModelAdmin):
-    icon = '<i class="material-icons">account_balance</i>'
+    icon = '<i class="material-icons">attachment</i>'
     list_display = ('scheme', 'place', 'description', 'allocated_amount', 'used_amount', 'status')
 
 @admin.register(models.Announcement)
@@ -24,15 +24,15 @@ class ComplaintAdmin(admin.ModelAdmin):
 
 @admin.register(models.Place)
 class PlaceAdmin(admin.ModelAdmin):
-    icons = '<i class="material-icons">place</i>'
+    icon = '<i class="material-icons">place</i>'
     list_display = ('name', 'description', 'type', 'upper_node', 'population', 'status')
 
 @admin.register(models.Population)
 class PopulationAdmin(admin.ModelAdmin):
-    icons = '<i class="material-icons">people</i>'
+    icon = '<i class="material-icons">people</i>'
     list_display = ('id', 'total_population', 'tribal_population', 'tribal_population_percent', 'status')
 
 @admin.register(models.Scheme)
 class SchemeAdmin(admin.ModelAdmin):
-    icons = '<i class="material-icons">assignment</i>'
+    icon = '<i class="material-icons">assignment</i>'
     list_display = ('name', 'department', 'description', 'allocated_amount', 'used_amount', 'likes', 'dis_likes', 'status', 'updated_at')
