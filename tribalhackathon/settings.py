@@ -33,7 +33,6 @@ ALLOWED_HOSTS = ["*", "127.0.0.1"]
 INSTALLED_APPS = [
     'material.theme.deeppurple',
     'material',
-    'material.frontend',
     'material.admin',
     'admin_dashboard',
     'django.contrib.admin',
